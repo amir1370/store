@@ -1,0 +1,394 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'category/css/main.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'category/css/util.css' %}"/>
+{% endblock %}
+{% block content %}
+    <!-- Breadcrumb Start-->
+    <ul class="breadcrumb">
+        <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+        <li><a href="category.html">ورق گالوانیزه</a></li>
+    </ul>
+    <!-- Breadcrumb End-->
+    <div class="row">
+        <!--Left Part Start -->
+        <aside id="column-left" class="col-sm-3 hidden-xs">
+            <h3 class="subtitle">دسته ها</h3>
+            <div class="box-category">
+                <ul id="cat_accordion">
+                    <li><a href="category.html">انواع ورق</a> <span class="down"></span>
+                        <ul>
+                            <li><a href="category.html">گالوانیزه</a> <span class="down"></span>
+                                <ul>
+                                    <li><a href="category.html">زیردسته ها</a></li>
+                                    <li><a href="category.html">زیردسته ها</a></li>
+                                    <li><a href="category.html">زیردسته ها</a></li>
+                                    <li><a href="category.html">زیردسته ها</a></li>
+                                    <li><a href="category.html">زیردسته جدید</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="category.html">روغنی</a></li>
+                            <li><a href="category.html">سیاه</a> <span class="down"></span>
+                                <ul>
+                                    <li><a href="category.html">زیردسته ها</a></li>
+                                    <li><a href="category.html">زیردسته جدید</a></li>
+                                    <li><a href="category.html">زیردسته جدید</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a class="active" href="category.html">میلگرد</a> <span class="down"></span>
+                        <ul style="display:block;">
+                            <li><a href="category.html">ساده</a> <span class="down"></span>
+                                <ul>
+                                    <li><a href="category.html">زیردسته های جدید</a></li>
+                                    <li><a href="category.html">زیردسته های جدید</a></li>
+                                    <li><a href="category.html">زیردسته جدید</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="category.html">آجدار</a> <span class="down"></span>
+                                <ul>
+                                    <li><a href="category.html">زیردسته های جدید</a></li>
+                                    <li><a href="category.html">زیردسته جدید</a></li>
+                                    <li><a href="category.html">زیردسته جدید</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="category.html">لوله</a> <span class="down"></span>
+                        <ul>
+                            <li><a href="category.html">گالوانیزه</a></li>
+                            <li><a href="category.html">استیل</a> <span class="down"></span>
+                                <ul>
+                                    <li><a href="category.html">زیردسته های جدید</a></li>
+                                    <li><a href="category.html">زیردسته ها</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="category.html">پروفیل</a> <span class="down"></span>
+                        <ul>
+                            <li><a href="category.html">دسته 1</a></li>
+                            <li><a href="category.html">دسته 2</a></li>
+                            <li><a href="category.html">دسته 3</a></li>
+                            <li><a href="category.html">دسته 4</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="category.html">نبشی</a> <span class="down"></span>
+                        <ul>
+                            <li><a href="category.html">نبشی</a></li>
+                            <li><a href="category.html">سپری</a></li>
+                            <li><a href="category.html">ناودنی</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <!--Left Part End -->
+        <!--Middle Part Start-->
+        <div id="content" class="col-sm-9">
+            <h1 class="title">ورق گالوانیزه</h1>
+
+
+            <div class="product-filter">
+                <div class="row">
+                    <div class="col-md-4 col-sm-5">
+                        <div class="btn-group">
+                            <button type="button" id="list-view" class="btn btn-default" data-toggle="tooltip"
+                                    title="List">
+                                <i class="fa fa-th-list"></i></button>
+                            <button type="button" id="grid-view" class="btn btn-default" data-toggle="tooltip"
+                                    title="Grid">
+                                <i class="fa fa-th"></i></button>
+                        </div>
+                        <a href="compare.html" id="compare-total">لیست محصولات</a></div>
+                    <div class="col-sm-2 text-right">
+                        <label class="control-label" for="input-sort">ضخامت :</label>
+                    </div>
+                    <div class="col-md-3 col-sm-2 text-right">
+                        <select id="input-limit" class="form-control">
+                            <option value="" selected="selected">--</option>
+                            <option value="">0.4</option>
+                            <option value="">0.5</option>
+                            <option value="">0.6</option>
+                            <option value="">1</option>
+                            <option value="">1.5</option>
+                            <option value="">2</option>
+                            <option value="">4</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1 text-right">
+                        <label class="control-label" for="input-limit">عرض :</label>
+                    </div>
+                    <div class="col-sm-2 text-right">
+                        <select id="input-limit" class="form-control">
+                            <option value="" selected="selected">--</option>
+                            <option value="">1000</option>
+                            <option value="">1250</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="row products-category">
+                <div class="text-right mr-2">
+                    <h4 style="font-size: 25px;">
+                        <span class="label label-primary" style="background-color: #c68d1e">ورق گالوانیزه هفت الماس</span>
+                    </h4>
+                </div>
+                <div class="container-table100">
+                    <div class="wrap-table100">
+                        <div class="table100">
+                            <table>
+                                <thead>
+                                <tr class="table100-head">
+                                    <th class="column1">نام</th>
+                                    <th class="column2">ضخامت</th>
+                                    <th class="column3">عرض</th>
+                                    <th class="column4">برند</th>
+                                    <th class="column5">واحد</th>
+                                    <th class="column6">قیمت</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="column1">ورق گالوانیزه</td>
+                                    <td class="column2">0.4</td>
+                                    <td class="column3">1000</td>
+                                    <td class="column4">هفت الماس</td>
+                                    <td class="column5">کیلوگرم</td>
+                                    <td class="column6">120000 ریال</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">ورق گالوانیزه</td>
+                                    <td class="column2">0.4</td>
+                                    <td class="column3">1000</td>
+                                    <td class="column4">هفت الماس</td>
+                                    <td class="column5">کیلوگرم</td>
+                                    <td class="column6">120000 ریال</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">ورق گالوانیزه</td>
+                                    <td class="column2">0.4</td>
+                                    <td class="column3">1000</td>
+                                    <td class="column4">هفت الماس</td>
+                                    <td class="column5">کیلوگرم</td>
+                                    <td class="column6">120000 ریال</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">ورق گالوانیزه</td>
+                                    <td class="column2">0.4</td>
+                                    <td class="column3">1000</td>
+                                    <td class="column4">هفت الماس</td>
+                                    <td class="column5">کیلوگرم</td>
+                                    <td class="column6">120000 ریال</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">ورق گالوانیزه</td>
+                                    <td class="column2">0.4</td>
+                                    <td class="column3">1000</td>
+                                    <td class="column4">هفت الماس</td>
+                                    <td class="column5">کیلوگرم</td>
+                                    <td class="column6">120000 ریال</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">ورق گالوانیزه</td>
+                                    <td class="column2">0.4</td>
+                                    <td class="column3">1000</td>
+                                    <td class="column4">هفت الماس</td>
+                                    <td class="column5">کیلوگرم</td>
+                                    <td class="column6">120000 ریال</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">ورق گالوانیزه</td>
+                                    <td class="column2">0.4</td>
+                                    <td class="column3">1000</td>
+                                    <td class="column4">هفت الماس</td>
+                                    <td class="column5">کیلوگرم</td>
+                                    <td class="column6">120000 ریال</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">ورق گالوانیزه</td>
+                                    <td class="column2">0.4</td>
+                                    <td class="column3">1000</td>
+                                    <td class="column4">هفت الماس</td>
+                                    <td class="column5">کیلوگرم</td>
+                                    <td class="column6">120000 ریال</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">ورق گالوانیزه</td>
+                                    <td class="column2">0.4</td>
+                                    <td class="column3">1000</td>
+                                    <td class="column4">هفت الماس</td>
+                                    <td class="column5">کیلوگرم</td>
+                                    <td class="column6">120000 ریال</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">ورق گالوانیزه</td>
+                                    <td class="column2">0.4</td>
+                                    <td class="column3">1000</td>
+                                    <td class="column4">هفت الماس</td>
+                                    <td class="column5">کیلوگرم</td>
+                                    <td class="column6">120000 ریال</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">ورق گالوانیزه</td>
+                                    <td class="column2">0.4</td>
+                                    <td class="column3">1000</td>
+                                    <td class="column4">هفت الماس</td>
+                                    <td class="column5">کیلوگرم</td>
+                                    <td class="column6">120000 ریال</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">ورق گالوانیزه</td>
+                                    <td class="column2">0.4</td>
+                                    <td class="column3">1000</td>
+                                    <td class="column4">هفت الماس</td>
+                                    <td class="column5">کیلوگرم</td>
+                                    <td class="column6">120000 ریال</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-right mr-2">
+                    <h4 style="font-size: 25px;">
+                        <span class="label label-primary" style="background-color: #c68d1e">ورق گالوانیزه کاشان</span>
+                    </h4>
+                </div>
+                <div class="container-table100">
+                    <div class="wrap-table100">
+                        <div class="table100">
+                            <table>
+                                <thead>
+                                <tr class="table100-head">
+                                    <th class="column1">نام</th>
+                                    <th class="column2">ضخامت</th>
+                                    <th class="column3">عرض</th>
+                                    <th class="column4">برند</th>
+                                    <th class="column5">واحد</th>
+                                    <th class="column6">قیمت</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="column1">ورق گالوانیزه</td>
+                                    <td class="column2">0.4</td>
+                                    <td class="column3">1000</td>
+                                    <td class="column4">کاشان</td>
+                                    <td class="column5">کیلوگرم</td>
+                                    <td class="column6">120000 ریال</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">ورق گالوانیزه</td>
+                                    <td class="column2">0.4</td>
+                                    <td class="column3">1000</td>
+                                    <td class="column4">کاشان</td>
+                                    <td class="column5">کیلوگرم</td>
+                                    <td class="column6">120000 ریال</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">ورق گالوانیزه</td>
+                                    <td class="column2">0.4</td>
+                                    <td class="column3">1000</td>
+                                    <td class="column4">کاشان</td>
+                                    <td class="column5">کیلوگرم</td>
+                                    <td class="column6">120000 ریال</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">ورق گالوانیزه</td>
+                                    <td class="column2">0.4</td>
+                                    <td class="column3">1000</td>
+                                    <td class="column4">کاشان</td>
+                                    <td class="column5">کیلوگرم</td>
+                                    <td class="column6">120000 ریال</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">ورق گالوانیزه</td>
+                                    <td class="column2">0.4</td>
+                                    <td class="column3">1000</td>
+                                    <td class="column4">کاشان</td>
+                                    <td class="column5">کیلوگرم</td>
+                                    <td class="column6">120000 ریال</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">ورق گالوانیزه</td>
+                                    <td class="column2">0.4</td>
+                                    <td class="column3">1000</td>
+                                    <td class="column4">کاشان</td>
+                                    <td class="column5">کیلوگرم</td>
+                                    <td class="column6">120000 ریال</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">ورق گالوانیزه</td>
+                                    <td class="column2">0.4</td>
+                                    <td class="column3">1000</td>
+                                    <td class="column4">کاشان</td>
+                                    <td class="column5">کیلوگرم</td>
+                                    <td class="column6">120000 ریال</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">ورق گالوانیزه</td>
+                                    <td class="column2">0.4</td>
+                                    <td class="column3">1000</td>
+                                    <td class="column4">کاشان</td>
+                                    <td class="column5">کیلوگرم</td>
+                                    <td class="column6">120000 ریال</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">ورق گالوانیزه</td>
+                                    <td class="column2">0.4</td>
+                                    <td class="column3">1000</td>
+                                    <td class="column4">کاشان</td>
+                                    <td class="column5">کیلوگرم</td>
+                                    <td class="column6">120000 ریال</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">ورق گالوانیزه</td>
+                                    <td class="column2">0.4</td>
+                                    <td class="column3">1000</td>
+                                    <td class="column4">کاشان</td>
+                                    <td class="column5">کیلوگرم</td>
+                                    <td class="column6">120000 ریال</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">ورق گالوانیزه</td>
+                                    <td class="column2">0.4</td>
+                                    <td class="column3">1000</td>
+                                    <td class="column4">کاشان</td>
+                                    <td class="column5">کیلوگرم</td>
+                                    <td class="column6">120000 ریال</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">ورق گالوانیزه</td>
+                                    <td class="column2">0.4</td>
+                                    <td class="column3">1000</td>
+                                    <td class="column4">کاشان</td>
+                                    <td class="column5">کیلوگرم</td>
+                                    <td class="column6">120000 ریال</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 text-left">
+                    <ul class="pagination">
+                        <li class="active"><span>1</span></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">&gt;</a></li>
+                        <li><a href="#">&gt;|</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 text-right">نمایش 1 تا 12 از 15 (مجموع 2 صفحه)</div>
+            </div>
+        </div>
+        <!--Middle Part End -->
+    </div>
+{% endblock %}

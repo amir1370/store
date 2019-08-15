@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'category/css/main.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'category/css/util.css' %}"/>
+    <style>
+
+    </style>
+{% endblock %}
+{% block content %}
+    <!-- Breadcrumb Start-->
+    <ul class="breadcrumb">
+        <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+        <li><a href="category.html">ورق گالوانیزه</a></li>
+    </ul>
+    <!-- Breadcrumb End-->
+    <div class="row">
+        <!--Left Part Start -->
+        <aside id="column-left" class="col-sm-3 hidden-xs">
+            <h3 class="subtitle">دسته ها</h3>
+            <div class="box-category">
+                <ul id="cat_accordion">
+                    <li><a href="category.html">انواع ورق</a> <span class="down"></span>
+                        <ul>
+                            <li><a href="category.html">گالوانیزه</a> <span class="down"></span>
+                                <ul>
+                                    <li><a href="category.html">زیردسته ها</a></li>
+                                    <li><a href="category.html">زیردسته ها</a></li>
+                                    <li><a href="category.html">زیردسته ها</a></li>
+                                    <li><a href="category.html">زیردسته ها</a></li>
+                                    <li><a href="category.html">زیردسته جدید</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="category.html">روغنی</a></li>
+                            <li><a href="category.html">سیاه</a> <span class="down"></span>
+                                <ul>
+                                    <li><a href="category.html">زیردسته ها</a></li>
+                                    <li><a href="category.html">زیردسته جدید</a></li>
+                                    <li><a href="category.html">زیردسته جدید</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a class="active" href="category.html">میلگرد</a> <span class="down"></span>
+                        <ul style="display:block;">
+                            <li><a href="category.html">ساده</a> <span class="down"></span>
+                                <ul>
+                                    <li><a href="category.html">زیردسته های جدید</a></li>
+                                    <li><a href="category.html">زیردسته های جدید</a></li>
+                                    <li><a href="category.html">زیردسته جدید</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="category.html">آجدار</a> <span class="down"></span>
+                                <ul>
+                                    <li><a href="category.html">زیردسته های جدید</a></li>
+                                    <li><a href="category.html">زیردسته جدید</a></li>
+                                    <li><a href="category.html">زیردسته جدید</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="category.html">لوله</a> <span class="down"></span>
+                        <ul>
+                            <li><a href="category.html">گالوانیزه</a></li>
+                            <li><a href="category.html">استیل</a> <span class="down"></span>
+                                <ul>
+                                    <li><a href="category.html">زیردسته های جدید</a></li>
+                                    <li><a href="category.html">زیردسته ها</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="category.html">پروفیل</a> <span class="down"></span>
+                        <ul>
+                            <li><a href="category.html">دسته 1</a></li>
+                            <li><a href="category.html">دسته 2</a></li>
+                            <li><a href="category.html">دسته 3</a></li>
+                            <li><a href="category.html">دسته 4</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="category.html">نبشی</a> <span class="down"></span>
+                        <ul>
+                            <li><a href="category.html">نبشی</a></li>
+                            <li><a href="category.html">سپری</a></li>
+                            <li><a href="category.html">ناودنی</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <!--Left Part End -->
+        <!--Middle Part Start-->
+        <div id="content" class="col-sm-9">
+            <div class="product-filter">
+                <div class="row">
+                    <div class="col-md-4 col-sm-5">
+                        <div class="btn-group">
+                            <h4 class="title">فرم ذوزنقه</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="row products-category">
+                {#                <div class="container-table100">#}
+                <div>
+                    {#                    <div class="wrap-table100">#}
+                    <div>
+                        <div class="marketshop-banner">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><img
+                                        src="{% static 'image/form/trapezius_sheet.png' %}" alt="فرم ذوزنقه"
+                                        title="فرم ذوزنقه" style="width:600px;"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="row">
+                                <p>برای سفارش محصول و استعلام قیمت با ما تماس بگیرید.</p>
+                            </div>
+                            <div class="row">
+                                <h2>
+                                    <span id="telephone" class="fa fa-phone-square"></span>
+                                    <span id="cart-total">021-66670510</span>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Middle Part End -->
+    </div>
+{% endblock %}

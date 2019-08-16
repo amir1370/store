@@ -5,7 +5,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'category/css/main.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'category/css/util.css' %}"/>
+    <style>
+        .custab {
+            border: 1px solid #ccc;
+            padding: 5px;
+            margin: 5% 0;
+            box-shadow: 3px 3px 2px #ccc;
+            transition: 0.5s;
+        }
 
+        .custab:hover {
+            box-shadow: 3px 3px 0px transparent;
+            transition: 0.5s;
+        }
+    </style>
 {% endblock %}
 {% block content %}
     <!-- Breadcrumb Start-->
@@ -126,27 +139,37 @@
                 <div>
                     {#                    <div class="wrap-table100">#}
                     <div>
-                        <div class="table100">
-                            <table>
+                        <div class="row  m-l-r-auto">
+                            <table class="table table-striped custab " >
                                 <thead>
-                                <tr class="table100-head">
-                                    <th class="column1">نام</th>
-                                    <th class="column1">برند</th>
-                                    <th class="column2">ضخامت</th>
-                                    <th class="column3">عرض</th>
-                                    <th class="column4">قیمت</th>
+                                <tr style="background-color: lightgray"  >
+                                    <th>نام</th>
+                                    <th>برند</th>
+                                    <th>ضخامت</th>
+                                    <th>ضخامت</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for product in product_list %}
-                                    <tr>
-                                        <td class="column1">{{ product }}</td>
-                                        <td class="column1">{{ product.brand }}</td>
-                                        <td class="column2">{{ product.thickness }}</td>
-                                        <td class="column3">{{ product.width }}</td>
-                                        <td class="column4">{{ product.price }}</td>
-                                    </tr>
-                                {% endfor %}
+                                {#                                {% for product in product_list %}#}
+                                <tr>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td><a class='btn btn-success btn-xs' href="#"> اطلاعات</a>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>4</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>4</td>
+                                </tr>
+                                {#                                {% endfor %}#}
                                 </tbody>
                             </table>
                         </div>
@@ -156,11 +179,5 @@
         </div>
         <!--Middle Part End -->
     </div>
-    <script>
-        $('td.column4').each(function () {
-            var item = $(this).text();
-            var num = Number(item).toLocaleString('en');
-            $(this).text(num);
-        });
-    </script>
+
 {% endblock %}

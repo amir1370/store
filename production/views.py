@@ -50,6 +50,9 @@ def category(request):
 class AboutView(TemplateView):
     template_name = "about_us.html"
 
+class StaticTableView(TemplateView):
+    template_name = "production/static_table.html"
+
 
 class ContactView(TemplateView):
     template_name = "contact_us.html"

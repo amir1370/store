@@ -16,7 +16,7 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    category = models.ForeignKey(Category, related_name='products', verbose_name='دسته')
+    category = models.ForeignKey(Category, related_name='products', verbose_name='دسته',on_delete=models.CASCADE)
     name = models.CharField(max_length=200, db_index=True, verbose_name='نام')
     slug = models.SlugField(max_length=200, db_index=True, verbose_name='نام لاتین')
     description = models.TextField(blank=True, verbose_name='توضیحات')

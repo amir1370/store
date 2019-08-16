@@ -42,4 +42,5 @@ urlpatterns += [
     url(r'^product/form/trapezius$', views.TrapeziusFormView.as_view(), name='trapezius_form'),
     url(r'^product/form/sine$', views.SineFormView.as_view(), name='sine_form'),
     url(r'^product/form/cheadlein$', views.CheadleinFormView.as_view(), name='cheadlein_form'),
+    url(r'^product/statictable$', views.StaticTableView.as_view(), name='static_table'),
 ]

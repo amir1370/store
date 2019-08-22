@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block style %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'category/css/main.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'category/css/util.css' %}"/>
+
+{% endblock %}
+{% block content %}
+    <!-- Breadcrumb Start-->
+    <ul class="breadcrumb">
+        <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+        <li><a href="category.html">ورق گالوانیزه</a></li>
+    </ul>
+    <!-- Breadcrumb End-->
+    <div class="row">
+        <!--Left Part Start -->
+        <aside id="column-left" class="col-sm-3 hidden-xs">
+            <h3 class="subtitle">دسته ها</h3>
+            <div class="box-category">
+                <ul id="cat_accordion">
+                    <li><a href="category.html">انواع ورق</a> <span class="down"></span>
+                        <ul>
+                            <li><a href="category.html">گالوانیزه</a> <span class="down"></span>
+                                <ul>
+                                    <li><a href="category.html">زیردسته ها</a></li>
+                                    <li><a href="category.html">زیردسته ها</a></li>
+                                    <li><a href="category.html">زیردسته ها</a></li>
+                                    <li><a href="category.html">زیردسته ها</a></li>
+                                    <li><a href="category.html">زیردسته جدید</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="category.html">روغنی</a></li>
+                            <li><a href="category.html">سیاه</a> <span class="down"></span>
+                                <ul>
+                                    <li><a href="category.html">زیردسته ها</a></li>
+                                    <li><a href="category.html">زیردسته جدید</a></li>
+                                    <li><a href="category.html">زیردسته جدید</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a class="active" href="category.html">میلگرد</a> <span class="down"></span>
+                        <ul style="display:block;">
+                            <li><a href="category.html">ساده</a> <span class="down"></span>
+                                <ul>
+                                    <li><a href="category.html">زیردسته های جدید</a></li>
+                                    <li><a href="category.html">زیردسته های جدید</a></li>
+                                    <li><a href="category.html">زیردسته جدید</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="category.html">آجدار</a> <span class="down"></span>
+                                <ul>
+                                    <li><a href="category.html">زیردسته های جدید</a></li>
+                                    <li><a href="category.html">زیردسته جدید</a></li>
+                                    <li><a href="category.html">زیردسته جدید</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="category.html">لوله</a> <span class="down"></span>
+                        <ul>
+                            <li><a href="category.html">گالوانیزه</a></li>
+                            <li><a href="category.html">استیل</a> <span class="down"></span>
+                                <ul>
+                                    <li><a href="category.html">زیردسته های جدید</a></li>
+                                    <li><a href="category.html">زیردسته ها</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="category.html">پروفیل</a> <span class="down"></span>
+                        <ul>
+                            <li><a href="category.html">دسته 1</a></li>
+                            <li><a href="category.html">دسته 2</a></li>
+                            <li><a href="category.html">دسته 3</a></li>
+                            <li><a href="category.html">دسته 4</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="category.html">نبشی</a> <span class="down"></span>
+                        <ul>
+                            <li><a href="category.html">نبشی</a></li>
+                            <li><a href="category.html">سپری</a></li>
+                            <li><a href="category.html">ناودنی</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <!--Left Part End -->
+        <!--Middle Part Start-->
+        <div id="content" class="col-sm-9">
+            <div class="product-filter">
+                <div class="row m-r-0">
+                    <div class="col-12">
+                        <div class="btn-group">
+                            <h4 class="title">جستو جو {{ category }}</h4>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <form action="" method="get">
+{#                                {% csrf_token %}#}
+                                <div class="form-group col-lg-3 ">
+                                    <label for="id_width">عرض</label>
+                                    <input name="width" type="number" step="any" class="form-control" id="id_width"
+                                           placeholder="عرض را وارد کنید" value="{{ filter.width }}">
+                                </div>
+                                <div class="form-group col-lg-3 ">
+                                    <label for="id_thickness">ضخامت</label>
+                                    <input name="thickness" type="number" step="any" class="form-control" id="id_thickness"
+                                           placeholder="ضخامت را وارد کنید" value="{{ filter.thickness }}">
+                                </div>
+                                <div class="form-group col-lg-3 ">
+                                    <label for="id_color">رنگ</label>
+                                    <input name="color" type="text" maxlength="200" step="any" class="form-control" id="id_color"
+                                           placeholder="رنگ را وارد کنید" value="{{ filter.color }}">
+                                </div>
+                                <div class="form-group col-lg-3 ">
+                                    <label for="id_color_code">کد رنگ</label>
+                                    <input name="color_code" type="text" maxlength="200" step="any" class="form-control" id="id_color_code"
+                                           placeholder="کد رنگ را وارد کنید" value="{{ filter.color_code }}">
+                                </div>
+
+                                <input type="submit" class="btn btn-primary m-l-15 float-l" value="جستجو"/>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br/>
+            <div class="row products-category">
+                {#                <div class="container-table100">#}
+                <div>
+                    {#                    <div class="wrap-table100">#}
+                    <div>
+                        <div class="table100">
+                            <table>
+                                <thead>
+                                <tr class="table100-head">
+                                    <th class="column1">نام</th>
+                                    <th class="column1">برند</th>
+                                    <th class="column2">ضخامت</th>
+                                    <th class="column3">عرض</th>
+                                    <th class="column4">رنگ</th>
+                                    <th class="column5">قیمت</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for product in product_list %}
+                                    <tr>
+                                        <td class="column1">{{ product }}</td>
+                                        <td class="column1">{{ product.brand }}</td>
+                                        <td class="column2">{{ product.thickness }}</td>
+                                        <td class="column3">{{ product.width }}</td>
+                                        <td class="column4">{{ product.color }}</td>
+                                        <td class="column5">{{ product.price }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Middle Part End -->
+    </div>
+    <script>
+        $('td.column5').each(function () {
+            var item = $(this).text();
+            var num = Number(item).toLocaleString('en');
+            $(this).text(num);
+        });
+    </script>
+{% endblock %}

@@ -95,22 +95,22 @@
                 <div class="row m-r-0">
                     <div class="col-12">
                         <div class="btn-group">
-                            <h4 class="title">جست و جو {{ category }}</h4>
+                            <h4 class="title">جستو جو {{ category }}</h4>
                         </div>
                     </div>
                     <div>
                         <div>
                             <form action="" method="get">
-                                {% csrf_token %}
+{#                                {% csrf_token %}#}
                                 <div class="form-group col-lg-6 ">
                                     <label for="id_width">عرض</label>
-                                    <input type="number" class="form-control" id="id_width"
-                                           placeholder="عرض را وارد کنید">
+                                    <input name="width" type="number" step="any" class="form-control" id="id_width"
+                                           placeholder="عرض را وارد کنید" value="{{ filter.width }}">
                                 </div>
                                 <div class="form-group col-lg-6 ">
                                     <label for="id_thickness">ضخامت</label>
-                                    <input type="number" class="form-control" id="id_thickness"
-                                           placeholder="ضخامت را وارد کنید">
+                                    <input name="thickness" type="number" step="any" class="form-control" id="id_thickness"
+                                           placeholder="ضخامت را وارد کنید" value="{{ filter.thickness }}">
                                 </div>
 
                                 <input type="submit" class="btn btn-primary m-l-15 float-l" value="جستجو"/>

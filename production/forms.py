@@ -7,7 +7,7 @@ class UpdatePriceForm(forms.ModelForm):
         fields = ['price']
 
 
-class SheetSearchForm(forms.ModelForm):
+class ColoredSheetSearchForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['width', 'thickness']
+        fields = ['width', 'thickness', 'color', 'color_code']

@@ -29,7 +29,7 @@ from django.urls import reverse_lazy, reverse
 
 import jdatetime
 
-from production.forms import SheetSearchForm
+from production.forms import ColoredSheetSearchForm
 from .models import Product, Category
 from django.forms import inlineformset_factory, formset_factory, modelformset_factory
 
@@ -125,22 +125,19 @@ def update_prices(request, category_id):
     return render(request, 'production/update_prices.html', {'formset': formset, "product_list": product_list})
 
 
+@method_decorator(csrf_exempt, name='dispatch')
 class SheetListView(ListView):
     model = Product
-    form_class = SheetSearchForm
     template_name = 'production/sheet_list.html'
 
     def get_context_data(self, **kwargs):
         context = super(SheetListView, self).get_context_data(**kwargs)
-        # context['category'] = Category.objects.get(pk=self.kwargs['pk'])
         filter_dict = {}
         search_list = ['width', 'thickness']
         for item in search_list:
             filter_dict[item] = self.request.GET.get(item)
-        form_data = self.form_class(initial=filter_dict)
-        context.update({
-            'search': form_data
-        })
+
+        context.update({"filter": filter_dict})
         return context
 
     def get_queryset(self):
@@ -154,12 +151,55 @@ class SheetListView(ListView):
     def filter_queryset(self, queryset):
         filter_dict = {}
         search_list = ['width', 'thickness']
+
         for item in search_list:
             filter_dict[item] = self.request.GET.get(item)
 
         queryset = queryset.filter(
             width__icontains=filter_dict['width'],
             thickness__icontains=filter_dict['thickness'],
+        )
+        return queryset
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class ColoredSheetListView(ListView):
+    model = Product
+    template_name = 'production/colored_sheet_list.html'
+    form_class = ColoredSheetSearchForm
+
+    def get_context_data(self, **kwargs):
+        context = super(ColoredSheetListView, self).get_context_data(**kwargs)
+        filter_dict = {}
+        search_list = ['width', 'thickness', 'color', 'color_code']
+        print(self.form_class())
+        for item in search_list:
+            filter_dict[item] = self.request.GET.get(item)
+
+        context.update({"filter": filter_dict})
+        print(list(context["product_list"])[0].color)
+        return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        if 'pk' in self.kwargs.keys():
+            queryset = queryset.filter(category=Category.objects.get(id=self.kwargs['pk'])).order_by("brand", "thickness")
+        if self.request.GET:
+            queryset = self.filter_queryset(queryset)
+        return queryset
+
+    def filter_queryset(self, queryset):
+        filter_dict = {}
+        search_list = ['width', 'thickness', 'color', 'color_code']
+
+        for item in search_list:
+            filter_dict[item] = self.request.GET.get(item)
+
+        queryset = queryset.filter(
+            width__icontains=filter_dict['width'],
+            thickness__icontains=filter_dict['thickness'],
+            color__icontains=filter_dict["color"],
+            color_code__icontains=filter_dict["color_code"]
         )
         return queryset
 

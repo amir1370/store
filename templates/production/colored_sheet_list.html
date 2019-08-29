@@ -94,8 +94,8 @@
             <div class="product-filter">
                 <div class="row m-r-0">
                     <div class="col-12">
-                        <div class="btn-group">
-                            <h4 class="title">جستو جو {{ category }}</h4>
+                        <div class="btn-group text-center">
+                            <h4 class="title"> برای استعلام قیمت و سفارش محصول با ما تماس بگیرید:   <b>9-66671597-021</b> </h4>
                         </div>
                     </div>
                     <div>
@@ -114,12 +114,12 @@
                                 </div>
                                 <div class="form-group col-lg-3 ">
                                     <label for="id_color">رنگ</label>
-                                    <input name="color" type="text" maxlength="200" step="any" class="form-control" id="id_color"
+                                    <input name="color" type="search" maxlength="200" step="any" class="form-control" id="id_color"
                                            placeholder="رنگ را وارد کنید" value="{{ filter.color }}">
                                 </div>
                                 <div class="form-group col-lg-3 ">
                                     <label for="id_color_code">کد رنگ</label>
-                                    <input name="color_code" type="text" maxlength="200" step="any" class="form-control" id="id_color_code"
+                                    <input name="color_code" type="number" maxlength="200" step="any" class="form-control" id="id_color_code"
                                            placeholder="کد رنگ را وارد کنید" value="{{ filter.color_code }}">
                                 </div>
 
@@ -145,7 +145,7 @@
                                     <th class="column2">ضخامت</th>
                                     <th class="column3">عرض</th>
                                     <th class="column4">رنگ</th>
-                                    <th class="column5">قیمت</th>
+{#                                    <th class="column5">قیمت</th>#}
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -156,7 +156,7 @@
                                         <td class="column2">{{ product.thickness }}</td>
                                         <td class="column3">{{ product.width }}</td>
                                         <td class="column4">{{ product.color }}</td>
-                                        <td class="column5">{{ product.price }}</td>
+{#                                        <td class="column5">{{ product.price }}</td>#}
                                     </tr>
                                 {% endfor %}
                                 </tbody>

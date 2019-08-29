@@ -140,36 +140,22 @@
                     {#                    <div class="wrap-table100">#}
                     <div>
                         <div class="row  m-l-r-auto">
-                            <table class="table table-striped custab " >
+                            <table class="table table-striped custab ">
                                 <thead>
-                                <tr style="background-color: lightgray"  >
-                                    <th>نام</th>
+                                <tr style="background-color: lightgray">
+                                    <th>نام محصول</th>
                                     <th>برند</th>
-                                    <th>ضخامت</th>
-                                    <th>ضخامت</th>
+                                    <th>سفارش محصول</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {#                                {% for product in product_list %}#}
-                                <tr>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>3</td>
-                                    <td><a class='btn btn-success btn-xs' href="#"> اطلاعات</a>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>3</td>
-                                    <td>4</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>3</td>
-                                    <td>4</td>
-                                </tr>
-                                {#                                {% endfor %}#}
+                                {% for product in product_list %}
+                                    <tr>
+                                        <td>{{ product.name }}</td>
+                                        <td>{{ product.brand }}</td>
+                                        <td><a class='btn btn-primary btn-xs' href="tel:+982166671599"> استعلام قیمت و سفارش محصول</a>
+                                    </tr>
+                                {% endfor %}
                                 </tbody>
                             </table>
                         </div>

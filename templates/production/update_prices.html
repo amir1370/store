@@ -110,17 +110,19 @@
                     {{ formset.management_form }}
                     <table>
                         {% for form in formset %}
+
                             <tr>
-                            <td>{{ product_list|list_item:forloop.counter0 }}{{ form.price }}</td>
+{#                            <td>{{ product_list|list_item:forloop.counter0 }}</td>#}
+                                <td>{{ product_list|list_item:forloop.counter0 }}{{ form.price }}</td>
                             </tr>
                         {% endfor %}
                     </table>
-                    {#                    {% for form in formset %}#}
-                    {#                        <ul>#}
-                    {#                            <li>{{ product_list|list_item:forloop.counter0 }}{{ form.price }}</li>#}
-                    {##}
-                    {#                        </ul>#}
-                    {#                    {% endfor %}#}
+{#                    {% for form in formset %}#}
+{#                        <ul>#}
+{#                            <li>{{ product_list|list_item:forloop.counter0 }}{{ form.price }}</li>#}
+{##}
+{#                        </ul>#}
+{#                    {% endfor %}#}
                     <div class="text-left">
                         <button type="submit" class="btn btn-primary">ثبت</button>
                     </div>

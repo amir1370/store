@@ -112,16 +112,21 @@ class ProductCreateView(CreateView):
 def update_prices(request, category_id):
     ProductFormSet = modelformset_factory(Product, fields=('price',), extra=0)
     if request.method == "POST":
-        formset = ProductFormSet(queryset=Product.objects.filter(category_id=category_id))
-        # print(formset)
+        formset = ProductFormSet(request.POST)
+        print(formset)
         if formset.is_valid():
             formset.save()
-            print(formset)
+
         # Do something. Should generally end with a redirect. For example:
+        for form in formset:
+            print(form)
+
         return HttpResponseRedirect('/product-list/{}'.format(category_id))
     else:
         product_list = list(Product.objects.filter(category_id=category_id))
         formset = ProductFormSet(queryset=Product.objects.filter(category_id=category_id))
+        # for form in formset:
+            # print(form)
     return render(request, 'production/update_prices.html', {'formset': formset, "product_list": product_list})
 
 
@@ -176,8 +181,11 @@ class ColoredSheetListView(ListView):
         for item in search_list:
             filter_dict[item] = self.request.GET.get(item)
 
+        filter_dict["color"] = "" if not filter_dict["color"] else filter_dict["color"]
+
+        print(filter_dict)
         context.update({"filter": filter_dict})
-        print(list(context["product_list"])[0].color)
+        # print(list(context["product_list"])[0].color)
         return context
 
     def get_queryset(self):
@@ -195,12 +203,17 @@ class ColoredSheetListView(ListView):
         for item in search_list:
             filter_dict[item] = self.request.GET.get(item)
 
+        if filter_dict['thickness']:
+            queryset = queryset.filter(thickness=filter_dict['thickness'])
+
+        if filter_dict["color_code"]:
+            queryset = queryset.filter(color_code=filter_dict["color_code"])
+
         queryset = queryset.filter(
             width__icontains=filter_dict['width'],
-            thickness__icontains=filter_dict['thickness'],
-            color__icontains=filter_dict["color"],
-            color_code__icontains=filter_dict["color_code"]
+            color__icontains=filter_dict["color"]
         )
+
         return queryset
 
 
@@ -214,3 +227,16 @@ class SineFormView(TemplateView):
 
 class CheadleinFormView(TemplateView):
     template_name = "production/cheadlein_sheet.html"
+
+
+class StaticProductListView(ListView):
+    model = Product
+    template_name = "production/static_table.html"
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        if 'pk' in self.kwargs.keys():
+            queryset = queryset.filter(category=Category.objects.get(id=self.kwargs['pk'])).order_by("brand", "thickness")
+        if self.request.GET:
+            queryset = self.filter_queryset(queryset)
+        return queryset

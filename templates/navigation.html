@@ -1,3 +1,4 @@
+{% load list_tags %}
 
 <nav id="menu" class="navbar">
         <div class="navbar-header"><span class="visible-xs visible-sm"> منو <b></b></span></div>
@@ -13,7 +14,7 @@
                                         <ul>
                                             <li><a href="{% url 'sheet_list' 7 %}">گالوانیزه </a></li>
                                             <li><a href="{% url 'colored_sheet_list' 8 %}">رنگی </a></li>
-                                            <li><a href="category.html">روغنی </a></li>
+                                            <li><a href="{% url 'static_table' 9 %}">روغنی </a></li>
                                             <li><a href="category.html">سیاه </a></li>
                                             <li><a href="category.html">آجدار </a></li>
                                             <li><a href="category.html">آلومینیوم </a></li>
@@ -23,7 +24,7 @@
                                 <li><a href="category.html">پروفیل</a></li>
                                 <li><a href="category.html">نبشی و ناودونی</a></li>
                                 <li><a href="category.html">تسمه</a></li>
-                                <li><a href="category.html">میلگرد</a></li>
+                                <li><a href="{% url 'static_table' 5 %}">میلگرد</a></li>
                                 <li><a href="category.html">تیرآهن</a></li>
                                 <li><a href="category.html">پیچ</a></li>
                                 <li><a href="category.html">توری</a></li>
@@ -55,22 +56,24 @@
                     </li>
                     <li class="dropdown"><a href="{% url 'about_us' %}">درباره ما</a></li>
 
-                    <li class="dropdown information-link"><a>برگه ها</a>
-                        <div class="dropdown-menu">
-                            <ul>
-                                <li><a href="login.html">ورود</a></li>
-                                <li><a href="register.html">ثبت نام</a></li>
-                                <li><a href="product.html">محصولات</a></li>
-                            </ul>
-                            <ul>
-                                <li><a href="/about/">درباره ما</a></li>
-                                <li><a href="/contact/">تماس با ما</a></li>
-                                <li><a href="search.html">جستجو</a></li>
-                            </ul>
-                        </div>
-                    </li>
+{#                    <li class="dropdown information-link"><a>برگه ها</a>#}
+{#                        <div class="dropdown-menu">#}
+{#                            <ul>#}
+{#                                <li><a href="login.html">ورود</a></li>#}
+{#                                <li><a href="register.html">ثبت نام</a></li>#}
+{#                                <li><a href="product.html">محصولات</a></li>#}
+{#                            </ul>#}
+{#                            <ul>#}
+{#                                <li><a href="/about/">درباره ما</a></li>#}
+{#                                <li><a href="/contact/">تماس با ما</a></li>#}
+{#                                <li><a href="search.html">جستجو</a></li>#}
+{#                            </ul>#}
+{#                        </div>#}
+{#                    </li>#}
+                    {% if request.user|has_group:"manager" %}
                     <li class="dropdown"><a href="{% url 'category_list' %}">مدیریت کالا</a></li>
-                    <li class="custom-link-right"><a href="/contact/"> با ما تماس بگیرید</a></li>
+                    {% endif %}
+                    <li class="custom-link-right"><a href="{% url 'contact_us' %}"> با ما تماس بگیرید</a></li>
                 </ul>
             </div>
         </div>

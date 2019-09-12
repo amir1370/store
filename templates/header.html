@@ -8,7 +8,7 @@
                 <div class="pull-left flip left-top">
                     <div class="links">
                         <ul>
-{#                            <li class="mobile" style="direction:ltr; ">+21 66------ <i class="fa fa-phone"></i></li>#}
+                            {#                            <li class="mobile" style="direction:ltr; ">+21 66------ <i class="fa fa-phone"></i></li>#}
                             <li class="email"><a href="mailto:fooladsam@gmail.com"><i class="fa fa-envelope"></i>fooladsam@gmail.com</a>
                             </li>
                             <li class="wrap_custom_block hidden-sm hidden-xs"><a>لیست تلفن ها<b></b></a>
@@ -38,8 +38,34 @@
                 </div>
                 <div id="top-links" class="nav pull-right flip">
                     <ul>
-                        <li><a href="login.html">ورود</a></li>
-                        <li><a href="register.html">ثبت نام</a></li>
+                        <li>
+                            {#                            <a href="login.html">ورود</a>#}
+                            <div id="cart">
+                                <button type="button" data-toggle="dropdown" data-loading-text="بارگذاری ..."
+                                        class="heading dropdown-toggle">
+                                    ورود
+                                </button>
+
+                                <div class="dropdown-menu">
+                                    <form method="post">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label class="control-label text-primary" for="input-email">آدرس ایمیل</label>
+                                            <input type="text" name="username" value="" placeholder="نام کاربری"
+                                                   id="input-email" class="form-control"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label text-primary" for="input-password">رمز عبور</label>
+                                            <input type="password" name="password" value="" placeholder="رمز عبور"
+                                                   id="input-password" class="form-control"/>
+                                        </div>
+                                        <input type="submit" value="ورود" class="btn btn-primary"/>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                        <li><span></span></li>
+                        {#                        <li><a href="register.html">ثبت نام</a></li>#}
                     </ul>
                 </div>
             </div>
@@ -51,7 +77,8 @@
             <div class="table-container">
                 <!-- Logo Start -->
                 <div class="col-table-cell col-lg-6 col-md-6 col-sm-12 col-xs-12 inner">
-                    <div id="logo"><a href="index.html"><img class="img-responsive" src="{% static 'image/folad-sam.png' %}"
+                    <div id="logo"><a href="index.html"><img class="img-responsive"
+                                                             src="{% static 'image/folad-sam.png' %}"
                                                              title="IronMarket" alt="IronMarket" width="200"
                                                              height="200"/></a></div>
                 </div>

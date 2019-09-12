@@ -23,9 +23,10 @@
             <div id="wowslider-container1">
                 <div class="ws_images">
                     <ul>
-                        <li><a href="#"><img src="{% static 'data1/images/slider1.jpg'%}" alt="slider jquery"
-                                                                title="ورق گالوانیزه" id="wows1_0"/></a></li>
-                        <li><img src="{% static 'data1/images/slider2.jpg' %}" alt="Slider-2" title="میلگرد و پروفیل" id="wows1_1"/></li>
+                        <li><a href="#"><img src="{% static 'data1/images/slider1.jpg' %}" alt="slider jquery"
+                                             title="ورق گالوانیزه" id="wows1_0"/></a></li>
+                        <li><img src="{% static 'data1/images/slider2.jpg' %}" alt="Slider-2" title="میلگرد و پروفیل"
+                                 id="wows1_1"/></li>
                     </ul>
                 </div>
                 <div class="ws_bullets">
@@ -36,9 +37,9 @@
                                                                 alt="Slider-2"/>2</span></a>
                     </div>
                 </div>
-{#                <div class="ws_script" style="position:absolute;left:-99%"><a href="http://wowslider.net">slider#}
-{#                    jquery</a> by WOWSlider.com v8.8#}
-{#                </div>#}
+                {#                <div class="ws_script" style="position:absolute;left:-99%"><a href="http://wowslider.net">slider#}
+                {#                    jquery</a> by WOWSlider.com v8.8#}
+                {#                </div>#}
                 <div class="ws_shadow"></div>
             </div>
             <script type="text/javascript" src="{% static 'engine1/wowslider.js' %}"></script>
@@ -73,7 +74,8 @@
                             src="{% static 'image/banner/contact-us.jpg' %}" alt="2 Block Banner"
                             title="2 Block Banner"/></a>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><a href="https://www.instagram.com/sam.foolad/"><img
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><a
+                            href="https://www.instagram.com/sam.foolad/"><img
                             src="{% static 'image/banner/insta-600x250.jpg' %}" alt="2 Block Banner 1"
                             title="2 Block Banner 1"/></a></div>
                 </div>
@@ -81,151 +83,155 @@
             <!-- Banner End -->
             <!-- دسته ها محصولات Slider Start-->
             <div class="category-module" id="latest_category">
-                <h3 class="subtitle">محصولات دارای نوسان قیمت - <a class="viewall" href="category.tpl">نمایش همه</a></h3>
+                <h3 class="subtitle">ورق های گالوانیزه کاشان </h3>
                 <div class="category-module-content">
                     <ul id="sub-cat" class="tabs">
-                        <li><a href="#tab-cat1">بیشترین کاهش قیمت</a></li>
-                        <li><a href="#tab-cat2">بیشترین افزایش قیمت</a></li>
+                        <li><a href="#tab-cat1">ورق های عرض 1000</a></li>
+                        <li><a href="#tab-cat2">ورق های عرض 1250</a></li>
                     </ul>
                     <div id="tab-cat1" class="tab_content">
                         <div class="owl-carousel latest_category_tabs">
-                            <div class="product-thumb">
-                                <div class="image"><a href="product.html"><img
-                                        src="image/product/samsung_tab_1-220x330.jpg" alt="1 میل عرض 1"
-                                        title="1 میل عرض 1"
-                                        class="img-responsive"/></a></div>
-                                <div class="caption">
-                                    <h4><a href="product.html">کاشان </a></h4>
-                                    <p class="price"><span class="price-new">12000 تومان</span>
-                                        <span class="saving">%10 -</span></p>
-                                </div>
-                                <div class="button-group">
-                                    <div class="add-to-links">
-                                        <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی"
-                                                onClick=""><i class="fa fa-heart"></i></button>
-                                        <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick="">
-                                            <i class="fa fa-exchange"></i></button>
+                            {% for product in product_list1 %}
+                                <div class="product-thumb">
+                                    {#                                <div class="image"><a href="product.html"><img#}
+                                    {#                                        src="image/product/samsung_tab_1-220x330.jpg" alt="1 میل عرض 1"#}
+                                    {#                                        title="1 میل عرض 1"#}
+                                    {#                                        class="img-responsive"/></a></div>#}
+                                    <div class="caption">
+                                        <h4>ورق گالوانیزه {{ product.thickness }}</h4>
+                                        <p class="price"><span class="price-new">قیمت: {{ product.price }} ریال</span>
+                                            <span class="saving">{{ product.brand }}</span></p>
                                     </div>
+                                    {#                                <div class="button-group">#}
+                                    {#                                    <div class="add-to-links">#}
+                                    {#                                        <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی"#}
+                                    {#                                                onClick=""><i class="fa fa-heart"></i></button>#}
+                                    {#                                        <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick="">#}
+                                    {#                                            <i class="fa fa-exchange"></i></button>#}
+                                    {#                                    </div>#}
+                                    {#                                </div>#}
                                 </div>
-                            </div>
-                            <div class="product-thumb">
-                                <div class="image"><a href="product.html"><img
-                                        src="image/product/samsung_tab_1-220x330.jpg" alt="1 میل عرض 1"
-                                        title="1 میل عرض 1"
-                                        class="img-responsive"/></a></div>
-                                <div class="caption">
-                                    <h4><a href="product.html">هفت الماس</a></h4>
-                                    <p class="price"><span class="price-new">12000 تومان</span>
-                                        <span class="saving">%10 -</span></p>
-                                </div>
-                                <div class="button-group">
-                                    <div class="add-to-links">
-                                        <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی"
-                                                onClick=""><i class="fa fa-heart"></i></button>
-                                        <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick="">
-                                            <i class="fa fa-exchange"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-thumb">
-                                <div class="image"><a href="product.html"><img
-                                        src="image/product/samsung_tab_1-220x330.jpg" alt="1 میل عرض 1"
-                                        title="1 میل عرض 1"
-                                        class="img-responsive"/></a></div>
-                                <div class="caption">
-                                    <h4><a href="product.html">هفت الماس</a></h4>
-                                    <p class="price"><span class="price-new">12000 تومان</span>
-                                        <span class="saving">%10 -</span></p>
-                                </div>
-                                <div class="button-group">
-                                    <div class="add-to-links">
-                                        <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی"
-                                                onClick=""><i class="fa fa-heart"></i></button>
-                                        <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick="">
-                                            <i class="fa fa-exchange"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-thumb">
-                                <div class="image"><a href="product.html"><img
-                                        src="image/product/samsung_tab_1-220x330.jpg" alt="1 میل عرض 1"
-                                        title="1 میل عرض 1"
-                                        class="img-responsive"/></a></div>
-                                <div class="caption">
-                                    <h4><a href="product.html">هفت الماس</a></h4>
-                                    <p class="price"><span class="price-new">12000 تومان</span>
-                                        <span class="saving">%10 -</span></p>
-                                </div>
-                                <div class="button-group">
-                                    <div class="add-to-links">
-                                        <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی"
-                                                onClick=""><i class="fa fa-heart"></i></button>
-                                        <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick="">
-                                            <i class="fa fa-exchange"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-thumb">
-                                <div class="image"><a href="product.html"><img
-                                        src="image/product/samsung_tab_1-220x330.jpg" alt="1 میل عرض 1"
-                                        title="1 میل عرض 1"
-                                        class="img-responsive"/></a></div>
-                                <div class="caption">
-                                    <h4><a href="product.html">هفت الماس</a></h4>
-                                    <p class="price"><span class="price-new">12000 تومان</span>
-                                        <span class="saving">%10 -</span></p>
-                                </div>
-                                <div class="button-group">
-                                    <div class="add-to-links">
-                                        <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی"
-                                                onClick=""><i class="fa fa-heart"></i></button>
-                                        <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick="">
-                                            <i class="fa fa-exchange"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-thumb">
-                                <div class="image"><a href="product.html"><img
-                                        src="image/product/samsung_tab_1-220x330.jpg" alt="1 میل عرض 1"
-                                        title="1 میل عرض 1"
-                                        class="img-responsive"/></a></div>
-                                <div class="caption">
-                                    <h4><a href="product.html">هفت الماس</a></h4>
-                                    <p class="price"><span class="price-new">12000 تومان</span>
-                                        <span class="saving">%10 -</span></p>
-                                </div>
-                                <div class="button-group">
-                                    <div class="add-to-links">
-                                        <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی"
-                                                onClick=""><i class="fa fa-heart"></i></button>
-                                        <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick="">
-                                            <i class="fa fa-exchange"></i></button>
-                                    </div>
-                                </div>
-                            </div>
+                            {% endfor %}
+{#                            <div class="product-thumb">#}
+{#                                <div class="image"><a href="product.html"><img#}
+{#                                        src="image/product/samsung_tab_1-220x330.jpg" alt="1 میل عرض 1"#}
+{#                                        title="1 میل عرض 1"#}
+{#                                        class="img-responsive"/></a></div>#}
+{#                                <div class="caption">#}
+{#                                    <h4><a href="product.html">هفت الماس</a></h4>#}
+{#                                    <p class="price"><span class="price-new">12000 تومان</span>#}
+{#                                        <span class="saving">%10 -</span></p>#}
+{#                                </div>#}
+{#                                <div class="button-group">#}
+{#                                    <div class="add-to-links">#}
+{#                                        <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی"#}
+{#                                                onClick=""><i class="fa fa-heart"></i></button>#}
+{#                                        <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick="">#}
+{#                                            <i class="fa fa-exchange"></i></button>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="product-thumb">#}
+{#                                <div class="image"><a href="product.html"><img#}
+{#                                        src="image/product/samsung_tab_1-220x330.jpg" alt="1 میل عرض 1"#}
+{#                                        title="1 میل عرض 1"#}
+{#                                        class="img-responsive"/></a></div>#}
+{#                                <div class="caption">#}
+{#                                    <h4><a href="product.html">هفت الماس</a></h4>#}
+{#                                    <p class="price"><span class="price-new">12000 تومان</span>#}
+{#                                        <span class="saving">%10 -</span></p>#}
+{#                                </div>#}
+{#                                <div class="button-group">#}
+{#                                    <div class="add-to-links">#}
+{#                                        <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی"#}
+{#                                                onClick=""><i class="fa fa-heart"></i></button>#}
+{#                                        <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick="">#}
+{#                                            <i class="fa fa-exchange"></i></button>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="product-thumb">#}
+{#                                <div class="image"><a href="product.html"><img#}
+{#                                        src="image/product/samsung_tab_1-220x330.jpg" alt="1 میل عرض 1"#}
+{#                                        title="1 میل عرض 1"#}
+{#                                        class="img-responsive"/></a></div>#}
+{#                                <div class="caption">#}
+{#                                    <h4><a href="product.html">هفت الماس</a></h4>#}
+{#                                    <p class="price"><span class="price-new">12000 تومان</span>#}
+{#                                        <span class="saving">%10 -</span></p>#}
+{#                                </div>#}
+{#                                <div class="button-group">#}
+{#                                    <div class="add-to-links">#}
+{#                                        <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی"#}
+{#                                                onClick=""><i class="fa fa-heart"></i></button>#}
+{#                                        <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick="">#}
+{#                                            <i class="fa fa-exchange"></i></button>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="product-thumb">#}
+{#                                <div class="image"><a href="product.html"><img#}
+{#                                        src="image/product/samsung_tab_1-220x330.jpg" alt="1 میل عرض 1"#}
+{#                                        title="1 میل عرض 1"#}
+{#                                        class="img-responsive"/></a></div>#}
+{#                                <div class="caption">#}
+{#                                    <h4><a href="product.html">هفت الماس</a></h4>#}
+{#                                    <p class="price"><span class="price-new">12000 تومان</span>#}
+{#                                        <span class="saving">%10 -</span></p>#}
+{#                                </div>#}
+{#                                <div class="button-group">#}
+{#                                    <div class="add-to-links">#}
+{#                                        <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی"#}
+{#                                                onClick=""><i class="fa fa-heart"></i></button>#}
+{#                                        <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick="">#}
+{#                                            <i class="fa fa-exchange"></i></button>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="product-thumb">#}
+{#                                <div class="image"><a href="product.html"><img#}
+{#                                        src="image/product/samsung_tab_1-220x330.jpg" alt="1 میل عرض 1"#}
+{#                                        title="1 میل عرض 1"#}
+{#                                        class="img-responsive"/></a></div>#}
+{#                                <div class="caption">#}
+{#                                    <h4><a href="product.html">هفت الماس</a></h4>#}
+{#                                    <p class="price"><span class="price-new">12000 تومان</span>#}
+{#                                        <span class="saving">%10 -</span></p>#}
+{#                                </div>#}
+{#                                <div class="button-group">#}
+{#                                    <div class="add-to-links">#}
+{#                                        <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی"#}
+{#                                                onClick=""><i class="fa fa-heart"></i></button>#}
+{#                                        <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick="">#}
+{#                                            <i class="fa fa-exchange"></i></button>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
                         </div>
                     </div>
                     <div id="tab-cat2" class="tab_content">
                         <div class="owl-carousel latest_category_tabs">
-                            <div class="product-thumb">
-                                <div class="image"><a href="product.html"><img
-                                        src="image/product/samsung_tab_1-220x330.jpg" alt="1 میل عرض 1"
-                                        title="1 میل عرض 1"
-                                        class="img-responsive"/></a></div>
-                                <div class="caption">
-                                    <h4><a href="product.html">هفت الماس</a></h4>
-                                    <p class="price"><span class="price-new">12000 تومان</span>
-                                        <span class="saving">%10 +</span></p>
-                                </div>
-                                <div class="button-group">
-                                    <div class="add-to-links">
-                                        <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی"
-                                                onClick=""><i class="fa fa-heart"></i></button>
-                                        <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick="">
-                                            <i class="fa fa-exchange"></i></button>
+                            {% for product in product_list2 %}
+                                <div class="product-thumb">
+                                    {#                                <div class="image"><a href="product.html"><img#}
+                                    {#                                        src="image/product/samsung_tab_1-220x330.jpg" alt="1 میل عرض 1"#}
+                                    {#                                        title="1 میل عرض 1"#}
+                                    {#                                        class="img-responsive"/></a></div>#}
+                                    <div class="caption">
+                                        <h4>ورق گالوانیزه {{ product.thickness }}</h4>
+                                        <p class="price"><span class="price-new">قیمت: {{ product.price }} ریال</span>
+                                            <span class="saving">{{ product.brand }}</span></p>
                                     </div>
+                                    {#                                <div class="button-group">#}
+                                    {#                                    <div class="add-to-links">#}
+                                    {#                                        <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی"#}
+                                    {#                                                onClick=""><i class="fa fa-heart"></i></button>#}
+                                    {#                                        <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick="">#}
+                                    {#                                            <i class="fa fa-exchange"></i></button>#}
+                                    {#                                    </div>#}
+                                    {#                                </div>#}
                                 </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
 
@@ -235,24 +241,30 @@
 
             <!-- برند Logo Carousel Start-->
             <div id="carousel" class="owl-carousel nxt">
-                <div class="item text-center"><a href="https://www.ksc.ir"><img src="{% static 'image/product/100x100/01.jpg' %}"
-                                                               alt="فولاد خوزستان"
-                                                               class="img-responsive"/></a></div>
-                <div class="item text-center"><a href="https://www.seven-diamonds.com"><img src="{% static 'image/product/100x100/02.jpg' %}"
-                                                               alt="کنون"
-                                                               class="img-responsive"/></a></div>
-                <div class="item text-center"><a href="https://www.aksteel.ir"><img src="{% static 'image/product/100x100/03.jpg' %}"
-                                                               alt="اپل"
-                                                               class="img-responsive"/></a></div>
-                <div class="item text-center"><a href="https://www.msc.ir"><img src="{% static 'image/product/100x100/04.jpg' %}"
-                                                               alt="اچ تی سی"
-                                                               class="img-responsive"/></a></div>
-                <div class="item text-center"><a href="https://tarazmetal.com/"><img src="{% static 'image/product/100x100/05.jpg' %}"
-                                                               alt="اچ پی"
-                                                               class="img-responsive"/></a></div>
-                <div class="item text-center"><a href="http://www.rooyandood.com/"><img src="{% static 'image/product/100x100/06.jpg' %}"
-                                                               alt="brand"
-                                                               class="img-responsive"/></a></div>
+                <div class="item text-center"><a href="https://www.ksc.ir"><img
+                        src="{% static 'image/product/100x100/01.jpg' %}"
+                        alt="فولاد خوزستان"
+                        class="img-responsive"/></a></div>
+                <div class="item text-center"><a href="https://www.seven-diamonds.com"><img
+                        src="{% static 'image/product/100x100/02.jpg' %}"
+                        alt="کنون"
+                        class="img-responsive"/></a></div>
+                <div class="item text-center"><a href="https://www.aksteel.ir"><img
+                        src="{% static 'image/product/100x100/03.jpg' %}"
+                        alt="اپل"
+                        class="img-responsive"/></a></div>
+                <div class="item text-center"><a href="https://www.msc.ir"><img
+                        src="{% static 'image/product/100x100/04.jpg' %}"
+                        alt="اچ تی سی"
+                        class="img-responsive"/></a></div>
+                <div class="item text-center"><a href="https://tarazmetal.com/"><img
+                        src="{% static 'image/product/100x100/05.jpg' %}"
+                        alt="اچ پی"
+                        class="img-responsive"/></a></div>
+                <div class="item text-center"><a href="http://www.rooyandood.com/"><img
+                        src="{% static 'image/product/100x100/06.jpg' %}"
+                        alt="brand"
+                        class="img-responsive"/></a></div>
             </div>
             <!-- برند Logo Carousel End -->
         </div>

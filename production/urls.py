@@ -35,8 +35,8 @@ urlpatterns += [
     url(r'^product-list/(?P<pk>[0-9]+)$', views.ProductListView.as_view(), name='product_list'),
     url(r'^product/(?P<pk>[0-9]+)/edit$', views.ProductUpdateView.as_view(), name='edit_product'),
     url(r'^product/create$', views.ProductCreateView.as_view(), name='create_product'),
-    url(r'^محصولات/ورق/(?P<pk>[0-9]+)$', views.SheetListView.as_view(), name='sheet_list'),
-    url(r'^محصولات/ورق-رنگی/(?P<pk>[0-9]+)$', views.ColoredSheetListView.as_view(), name='colored_sheet_list'),
+    url(r'^product/galvanized_sheet/(?P<pk>[0-9]+)$', views.SheetListView.as_view(), name='sheet_list'),
+    url(r'^product/colored_sheet/(?P<pk>[0-9]+)$', views.ColoredSheetListView.as_view(), name='colored_sheet_list'),
 ]
 # form
 urlpatterns += [

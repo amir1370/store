@@ -33,12 +33,23 @@ from production.forms import ColoredSheetSearchForm
 from .models import Product, Category
 from django.forms import inlineformset_factory, formset_factory, modelformset_factory
 
+check_manager = user_passes_test(lambda u: Group.objects.get(name='manager') in u.groups.all())
 
 # Create your views here.
 def index(request):
-    product_list = Product.objects.all()
-    print(product_list)
-    return render(request, 'production/index.html', {"product_list": product_list})
+    product_list1 = Product.objects.filter(category__id=7, brand="کاشان", price__isnull=False, width=1000).order_by("thickness")
+    product_list2 = Product.objects.filter(category__id=7, brand="کاشان", price__isnull=False, width=1250).order_by("thickness")
+
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+
+    print(len(product_list1))
+    return render(request, 'production/index.html', {"product_list1": product_list1, "product_list2": product_list2})
 
 
 def category(request):
@@ -49,6 +60,7 @@ def category(request):
 
 class AboutView(TemplateView):
     template_name = "about_us.html"
+
 
 class StaticTableView(TemplateView):
     template_name = "production/static_table.html"
@@ -74,6 +86,7 @@ class CategoryCreateView(CreateView):
     success_url = '/category-list/'
 
 
+@method_decorator(check_manager, name='dispatch')
 class ProductListView(ListView):
     model = Product
 
@@ -85,12 +98,13 @@ class ProductListView(ListView):
     def get_queryset(self):
         queryset = super().get_queryset()
         if 'pk' in self.kwargs.keys():
-            queryset = queryset.filter(category=Category.objects.get(id=self.kwargs['pk'])).order_by("brand", "thickness")
-        if self.request.GET:
-            queryset = self.filter_queryset(queryset)
+            queryset = queryset.filter(category=Category.objects.get(id=self.kwargs['pk'])).order_by("brand",
+                                                                                                     "thickness")
+
         return queryset
 
 
+@method_decorator(check_manager, name='dispatch')
 class ProductUpdateView(UpdateView):
     model = Product
     fields = ['name', 'slug', 'category', 'description', 'price', 'stock', 'available', 'length', 'width', 'thickness',
@@ -100,6 +114,7 @@ class ProductUpdateView(UpdateView):
         return reverse('product_list', kwargs={'pk': self.object.category.id})
 
 
+@method_decorator(check_manager, name='dispatch')
 class ProductCreateView(CreateView):
     model = Product
     fields = ['name', 'slug', 'category', 'description', 'price', 'stock', 'available', 'length', 'width', 'thickness',
@@ -109,10 +124,11 @@ class ProductCreateView(CreateView):
         return reverse('product_list', kwargs={'pk': self.object.category.id})
 
 
+@check_manager
 def update_prices(request, category_id):
     ProductFormSet = modelformset_factory(Product, fields=('price',), extra=0)
     if request.method == "POST":
-        formset = ProductFormSet(request.POST)
+        formset = ProductFormSet(request.POST, request.FILES)
         print(formset)
         if formset.is_valid():
             formset.save()
@@ -123,10 +139,11 @@ def update_prices(request, category_id):
 
         return HttpResponseRedirect('/product-list/{}'.format(category_id))
     else:
-        product_list = list(Product.objects.filter(category_id=category_id))
-        formset = ProductFormSet(queryset=Product.objects.filter(category_id=category_id))
+        product_list = list(Product.objects.filter(category_id=category_id).order_by("brand", "thickness"))
+        formset = ProductFormSet(
+            queryset=Product.objects.filter(category_id=category_id).order_by("brand", "thickness"))
         # for form in formset:
-            # print(form)
+        # print(form)
     return render(request, 'production/update_prices.html', {'formset': formset, "product_list": product_list})
 
 
@@ -137,6 +154,7 @@ class SheetListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(SheetListView, self).get_context_data(**kwargs)
+        print(context)
         filter_dict = {}
         search_list = ['width', 'thickness']
         for item in search_list:
@@ -147,8 +165,11 @@ class SheetListView(ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
+        print(queryset)
         if 'pk' in self.kwargs.keys():
-            queryset = queryset.filter(category=Category.objects.get(id=self.kwargs['pk'])).order_by("brand", "thickness")
+            print(self.kwargs['pk'])
+            queryset = queryset.filter(category=Category.objects.get(id=self.kwargs['pk']), price__isnull=False).order_by("brand", "thickness")
+            print(queryset)
         if self.request.GET:
             queryset = self.filter_queryset(queryset)
         return queryset
@@ -181,7 +202,7 @@ class ColoredSheetListView(ListView):
         for item in search_list:
             filter_dict[item] = self.request.GET.get(item)
 
-        filter_dict["color"] = "" if not filter_dict["color"] else filter_dict["color"]
+        filter_dict["color"] = " " if not filter_dict["color"] else filter_dict["color"]
 
         print(filter_dict)
         context.update({"filter": filter_dict})
@@ -191,7 +212,8 @@ class ColoredSheetListView(ListView):
     def get_queryset(self):
         queryset = super().get_queryset()
         if 'pk' in self.kwargs.keys():
-            queryset = queryset.filter(category=Category.objects.get(id=self.kwargs['pk'])).order_by("brand", "thickness")
+            queryset = queryset.filter(category=Category.objects.get(id=self.kwargs['pk'])).order_by("brand",
+                                                                                                     "thickness")
         if self.request.GET:
             queryset = self.filter_queryset(queryset)
         return queryset
@@ -233,10 +255,32 @@ class StaticProductListView(ListView):
     model = Product
     template_name = "production/static_table.html"
 
+    def get_context_data(self, **kwargs):
+        context = super(StaticProductListView, self).get_context_data(**kwargs)
+        pk = self.kwargs["pk"]
+        category = Category.objects.get(id=pk)
+        context.update({"category": category})
+        return context
+
     def get_queryset(self):
         queryset = super().get_queryset()
         if 'pk' in self.kwargs.keys():
-            queryset = queryset.filter(category=Category.objects.get(id=self.kwargs['pk'])).order_by("brand", "thickness")
+            queryset = queryset.filter(category=Category.objects.get(id=self.kwargs['pk'])).order_by("brand",
+                                                                                                     "thickness")
         if self.request.GET:
             queryset = self.filter_queryset(queryset)
         return queryset
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('home')
+    else:
+        form = UserCreationForm()
+    return render(request, 'signup.html', {'form': form})
